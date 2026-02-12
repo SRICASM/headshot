@@ -1,14 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import CinematicHero from './components/CinematicHero';
 import ErrorBoundary from './components/ErrorBoundary';
+import Header from './components/Header';
 
 function App() {
+  const [autoPlayDone, setAutoPlayDone] = useState(false);
+
   return (
     <div className="App">
+      <Header show={autoPlayDone} />
       <ErrorBoundary>
-        {/* Continuous animation: Frames 0-89 (90 frames total) */}
-        <CinematicHero debug={true} />
+        <CinematicHero onAutoPlayComplete={() => setAutoPlayDone(true)} />
       </ErrorBoundary>
     </div>
   );
